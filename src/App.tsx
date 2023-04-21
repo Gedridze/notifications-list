@@ -27,7 +27,7 @@ function App() {
     setNotifications(notifications);
   }
   return (
-    <div className="max-w-3xl p-4 mx-auto mt-20 bg-white rounded-md shadow-md">
+    <div className="max-w-3xl p-4 mx-auto bg-white rounded-md shadow-md max-sm:min-h-screen sm:mt-20">
       <NotificationsHeader
         className="mb-5"
         count={
