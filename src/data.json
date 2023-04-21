@@ -2,7 +2,7 @@
   "notifications": [
     {
       "authorName": "Mark Webber",
-      "authorImage": "/assets/images/avatar-mark-webber.webp",
+      "authorImage": "assets/images/avatar-mark-webber.webp",
       "type": "react",
       "reactTarget": "My first tournament today!",
       "createdAt": "1m ago",
@@ -10,14 +10,14 @@
     },
     {
       "authorName": "Angela Gray",
-      "authorImage": "/assets/images/avatar-angela-gray.webp",
+      "authorImage": "assets/images/avatar-angela-gray.webp",
       "type": "base",
       "createdAt": "5m ago",
       "read": false
     },
     {
       "authorName": "Jacob Thompson",
-      "authorImage": "/assets/images/avatar-jacob-thompson.webp",
+      "authorImage": "assets/images/avatar-jacob-thompson.webp",
       "type": "group",
       "groupAction": "join",
       "groupName": "Chess Club",
@@ -26,7 +26,7 @@
     },
     {
       "authorName": "Rizky Hasanuddin",
-      "authorImage": "/assets/images/avatar-rizky-hasanuddin.webp",
+      "authorImage": "assets/images/avatar-rizky-hasanuddin.webp",
       "type": "pm",
       "receivedMessage": "Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and I'm already having lots of fun and improving my game.",
       "createdAt": "5 days ago",
@@ -34,15 +34,15 @@
     },
     {
       "authorName": "Kimberly Smith",
-      "authorImage": "/assets/images/avatar-kimberly-smith.webp",
+      "authorImage": "assets/images/avatar-kimberly-smith.webp",
       "type": "comment",
-      "pictureUrl": "/assets/images/image-chess.webp",
+      "pictureUrl": "assets/images/image-chess.webp",
       "createdAt": "1 week ago",
       "read": true
     },
     {
       "authorName": "Nathan Peterson",
-      "authorImage": "/assets/images/avatar-nathan-peterson.webp",
+      "authorImage": "assets/images/avatar-nathan-peterson.webp",
       "type": "react",
       "reactTarget": "5 end-game stratagies to increase your win rate",
       "createdAt": "2 weeks ago",
@@ -50,7 +50,7 @@
     },
     {
       "authorName": "Anna Kim",
-      "authorImage": "/assets/images/avatar-anna-kim.webp",
+      "authorImage": "assets/images/avatar-anna-kim.webp",
       "type": "group",
       "groupAction": "leave",
       "createdAt": "2 weeks ago",
