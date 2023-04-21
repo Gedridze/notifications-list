@@ -1,8 +1,4 @@
 import classNames from "classnames";
-export enum GroupNotificationAction {
-  JOIN,
-  LEAVE,
-}
 export class BaseNotification {
   id: string;
   constructor(
@@ -52,7 +48,6 @@ export class BaseNotification {
     );
   }
 }
-
 export class ReactNotification extends BaseNotification {
   constructor(
     public authorImage: string,
@@ -85,11 +80,11 @@ export class GroupNotification extends BaseNotification {
     public authorName: string,
     public createdAt: string,
     public read: boolean,
-    public groupAction: GroupNotificationAction,
+    public groupAction: "join" | "leave",
     public groupName: string
   ) {
     super(authorImage, authorName, createdAt, read);
-    if (groupAction === GroupNotificationAction.JOIN)
+    if (groupAction === "join")
       this.notificationText = "has joined your group";
     else this.notificationText = "left the group";
   }
@@ -136,7 +131,7 @@ export class PmNotification extends BaseNotification {
   }
 }
 
-export class LikeNotification extends BaseNotification {
+export class CommentNotification extends BaseNotification {
   constructor(
     public authorImage: string,
     public authorName: string,
