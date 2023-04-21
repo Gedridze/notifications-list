@@ -1,11 +1,4 @@
 import classNames from "classnames";
-export enum NotificationType {
-  BASE,
-  FOLLOW,
-  GROUP,
-  PM,
-  PICTURE,
-}
 export enum GroupNotificationAction {
   JOIN,
   LEAVE,
@@ -17,20 +10,19 @@ export class BaseNotification {
     public authorName: string,
     public createdAt: string,
     public read: boolean,
-    public notificationType: NotificationType
   ) {
     this.id = Math.random().toString();
   }
 
   protected renderName() {
-    return <span className="font-bold text-vd-blue">{this.authorName}</span>;
+    return <span className="font-bold cursor-pointer text-vd-blue hover:text-blue">{this.authorName}</span>;
   }
   protected renderDate() {
     return <div className="text-grayish-blue">{this.createdAt}</div>;
   }
   protected renderSeenBubble() {
     if (this.read) return;
-    return <div className="inline-block ml-1 rounded-full h-2 w-2 bg-red" />;
+    return <div className="inline-block w-2 h-2 ml-1 rounded-full bg-red" />;
   }
   protected contentScaffold(innerContent: JSX.Element) {
     return (
@@ -42,7 +34,7 @@ export class BaseNotification {
           }
         )}
       >
-        <img src={this.authorImage} className="h-10 pr-1" />
+        <img src={this.authorImage} className="h-10 pr-1 mr-5" />
         {innerContent}
       </div>
     );
@@ -67,14 +59,13 @@ export class ReactNotification extends BaseNotification {
     public authorName: string,
     public createdAt: string,
     public read: boolean,
-    public notificationType: NotificationType,
     public reactTarget: string
   ) {
-    super(authorImage, authorName, createdAt, read, notificationType);
+    super(authorImage, authorName, createdAt, read);
   }
 
   private renderReactTarget() {
-    return <div className="inline font-bold">{this.reactTarget}</div>;
+    return <div className="inline font-bold cursor-pointer hover:text-blue">{this.reactTarget}</div>;
   }
   protected innerContent(): JSX.Element {
     return (
@@ -94,11 +85,10 @@ export class GroupNotification extends BaseNotification {
     public authorName: string,
     public createdAt: string,
     public read: boolean,
-    public notificationType: NotificationType,
     public groupAction: GroupNotificationAction,
     public groupName: string
   ) {
-    super(authorImage, authorName, createdAt, read, notificationType);
+    super(authorImage, authorName, createdAt, read);
     if (groupAction === GroupNotificationAction.JOIN)
       this.notificationText = "has joined your group";
     else this.notificationText = "left the group";
@@ -108,7 +98,7 @@ export class GroupNotification extends BaseNotification {
     return (
       <span>
         {this.notificationText}
-        <b className="pl-1 font-bold text-blue">{this.groupName}</b>
+        <b className="pl-1 font-bold cursor-pointer hover:text-blue">{this.groupName}</b>
       </span>
     );
   }
@@ -128,10 +118,9 @@ export class PmNotification extends BaseNotification {
     public authorName: string,
     public createdAt: string,
     public read: boolean,
-    public notificationType: NotificationType,
     public receivedMessage: string
   ) {
-    super(authorImage, authorName, createdAt, read, notificationType);
+    super(authorImage, authorName, createdAt, read);
   }
 
   protected innerContent(): JSX.Element {
@@ -139,7 +128,7 @@ export class PmNotification extends BaseNotification {
       <div>
         {this.renderName()} sent you a private message {this.renderSeenBubble()}
         {this.renderDate()}
-        <div className="mt-2 border-l-grayish-blue-2 rounded-md p-3 border">
+        <div className="p-3 mt-2 border rounded-md cursor-pointer border-l-grayish-blue-2 hover:bg-l-grayish-blue-1">
           {this.receivedMessage}
         </div>
       </div>
@@ -153,10 +142,9 @@ export class LikeNotification extends BaseNotification {
     public authorName: string,
     public createdAt: string,
     public read: boolean,
-    public notificationType: NotificationType,
     public pictureUrl: string
   ) {
-    super(authorImage, authorName, createdAt, read, notificationType);
+    super(authorImage, authorName, createdAt, read);
   }
 
   protected innerContent(): JSX.Element {

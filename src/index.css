@@ -2,3 +2,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply p-[0.01px] bg-vl-grayish-blue
+  }
+}

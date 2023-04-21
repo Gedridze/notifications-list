@@ -5,21 +5,18 @@ import {
   GroupNotification,
   GroupNotificationAction,
   LikeNotification,
-  NotificationType,
   PmNotification,
   ReactNotification,
 } from "./classes/notifications";
 
 function App() {
-  const [count, setCount] = useState(0);
   let notifications: BaseNotification[] = [];
   notifications.push(
     new BaseNotification(
       "public/assets/images/avatar-angela-gray.webp",
       "Angela Gray",
       "5m ago",
-      false,
-      NotificationType.BASE
+      false
     )
   );
   notifications.push(
@@ -28,7 +25,6 @@ function App() {
       "Angela Gray",
       "5m ago",
       false,
-      NotificationType.BASE,
       "My first tournament today!"
     )
   );
@@ -38,7 +34,6 @@ function App() {
       "Angela Gray",
       "5m ago",
       false,
-      NotificationType.GROUP,
       GroupNotificationAction.JOIN,
       "Chess Club"
     )
@@ -50,7 +45,6 @@ function App() {
       "Angela Gray",
       "5m ago",
       false,
-      NotificationType.GROUP,
       "Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and I'm already having lots of fun and improving my game."
     )
   );
@@ -61,7 +55,6 @@ function App() {
       "Angela Gray",
       "5m ago",
       true,
-      NotificationType.PICTURE,
       "public/assets/images/image-chess.webp"
     )
   );
@@ -73,25 +66,34 @@ function App() {
     notifications.forEach((notif) => {
       notif.read = true;
     });
-    setNotifications(notifications)
+    setNotifications(notifications);
   }
 
   function markAsRead(id: string) {
-    const notifications = [...notificationList]
-    notifications.forEach(notification => {
+    const notifications = [...notificationList];
+    notifications.forEach((notification) => {
       if (notification.id === id) {
-        notification.read = true
+        notification.read = true;
       }
-    })
-    console.log('READ')
-    setNotifications(notifications)
+    });
+    console.log("READ");
+    setNotifications(notifications);
   }
   return (
-    <div className="p-4">
-      {notificationList[0]!.read}
-      <NotificationsHeader count={5} onMarkAsRead={markAllAsRead} />
+    <div className="max-w-3xl p-4 mx-auto mt-20 bg-white rounded-md shadow-md">
+      <NotificationsHeader
+        className="mb-5"
+        count={
+          notificationList.filter((notification) => !notification.read).length
+        }
+        onMarkAsRead={markAllAsRead}
+      />
       {notificationList.map((notification) => (
-        <div className="mb-3" key={notification.id} onClick={() => markAsRead(notification.id)}>
+        <div
+          className="mb-3"
+          key={notification.id}
+          onClick={() => markAsRead(notification.id)}
+        >
           {notification.renderContent()}
         </div>
       ))}
