@@ -11,7 +11,7 @@ export class BaseNotification {
   }
 
   protected renderName() {
-    return <span className="font-bold cursor-pointer text-vd-blue hover:text-blue">{this.authorName}</span>;
+    return <span className="mr-1 font-bold cursor-pointer text-vd-blue hover:text-blue">{this.authorName}</span>;
   }
   protected renderDate() {
     return <div className="text-grayish-blue">{this.createdAt}</div>;
